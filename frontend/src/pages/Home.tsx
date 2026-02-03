@@ -41,7 +41,7 @@ export const Home = () => {
             </section>
 
             {/* Main Action - Health Assistant */}
-            <section className="assistant-card card mb-4" onClick={() => navigate('/chat')}>
+            <section className="assistant-card card mb-4" onClick={() => navigate('/home/chat')}>
                 <div className="flex justify-between items-center mb-4">
                     <div className="icon-bg">
                         <Activity size={24} color="var(--color-primary)" />

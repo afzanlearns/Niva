@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { Layout } from './components/layout/Layout';
-import { Home, HealthAssistant, Emergency, FamilyTree } from './pages';
+import { Home, HealthAssistant, Emergency, FamilyTree, Landing } from './pages';
 
 function App() {
   return (
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="chat" element={<HealthAssistant />} />
             <Route path="family" element={<FamilyTree />} />
