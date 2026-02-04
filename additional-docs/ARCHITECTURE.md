@@ -1,201 +1,222 @@
-# Niva — Architecture & Project Structure
+# Niva — Revolutionary Architecture & Project Structure
 
-**Document Version:** 1.0  
-**Date:** February 3, 2026  
+**Document Version:** 2.0  
+**Date:** February 4, 2026  
 **Owner:** Engineering Team  
-**Status:** Draft  
-**Depends On:** PRD v1.0, TRD v1.0  
+**Status:** Enhanced with Revolutionary Technical Architecture  
+**Depends On:** PRD v2.0, TRD v2.0  
 
 ---
 
 ## 1. Purpose
 
-This document is the **blueprint**. It defines the complete project structure from the root repository down to individual modules, explains why each module exists, how modules talk to each other, and provides the visual and structural maps that any new engineer needs to understand the codebase in under an hour.
+This document is the **revolutionary blueprint** for the world's most advanced community health platform. It defines the complete project structure for a system that delivers predictive health intelligence, emotional health integration, community wisdom networks, and intergenerational health mapping — capabilities that have never been combined in a single platform.
 
 ---
 
-## 2. Repository Layout
+## 2. Revolutionary Repository Layout
 
-The monorepo is split into three top-level directories that mirror the three deployment targets: the Android app, the cloud backend, and shared tooling.
+The monorepo now supports breakthrough capabilities across multiple deployment targets and revolutionary technologies.
 
 ```
 niva/
-├── android/                    # The on-device Android application
-├── backend/                    # Cloud microservices
-├── shared/                     # Shared libraries, data contracts, scripts
-├── docs/                       # All project documentation
-├── scripts/                    # Dev tooling, data generation, deployment
-├── docker/                     # Container definitions
-├── .github/                    # CI/CD workflows
-├── PRD.md                      # Product Requirements Document
-├── TRD.md                      # Technical Requirements Document
-├── ARCHITECTURE.md             # This document
-└── README.md                   # Project entry point
+├── android/                    # Revolutionary on-device health AI application
+├── backend/                    # Advanced cloud microservices with predictive analytics
+├── blockchain/                 # Community wisdom verification network (NEW)
+├── ai-models/                  # Specialized AI models and training pipelines (NEW)
+├── environmental-data/         # Environmental health data processing (NEW)
+├── shared/                     # Enhanced shared libraries and contracts
+├── docs/                       # Comprehensive project documentation
+├── scripts/                    # Advanced dev tooling and deployment automation
+├── docker/                     # Container definitions for all services
+├── .github/                    # Enhanced CI/CD workflows
+├── PRD.md                      # Enhanced Product Requirements Document
+├── TRD.md                      # Revolutionary Technical Requirements Document
+├── ARCHITECTURE.md             # This enhanced document
+└── README.md                   # Revolutionary project entry point
 ```
 
 ---
 
-## 3. Android Application Structure
+## 3. Revolutionary Android Application Structure
 
-The Android app is the core product. It is structured around a **clean architecture** pattern (Domain → Data → Presentation) with a dedicated AI module that sits as a peer to the data layer, not inside it. This separation is intentional: the AI module has fundamentally different lifecycle, performance, and memory characteristics than a traditional data layer.
+The Android app now incorporates breakthrough AI capabilities, predictive health intelligence, and emotional health integration in a clean, scalable architecture.
 
 ```
 android/
 ├── app/
 │   ├── src/
 │   │   ├── main/
-│   │   │   ├── java/com/swasthya/mitra/
-│   │   │   │   ├── core/                       # App entry, DI container, config
-│   │   │   │   │   ├── SwasthyaApp.kt          # Application class
-│   │   │   │   │   ├── di/                     # Dependency injection (Hilt)
+│   │   │   ├── java/com/niva/health/
+│   │   │   │   ├── core/                       # Enhanced app core with AI orchestration
+│   │   │   │   │   ├── NivaApp.kt              # Revolutionary application class
+│   │   │   │   │   ├── di/                     # Enhanced dependency injection
 │   │   │   │   │   │   ├── AppModule.kt
-│   │   │   │   │   │   ├── AiModule.kt
-│   │   │   │   │   │   ├── SyncModule.kt
-│   │   │   │   │   │   └── DatabaseModule.kt
-│   │   │   │   │   └── config/                # Build-time and runtime config
+│   │   │   │   │   │   ├── AiModule.kt         # Multi-modal AI models
+│   │   │   │   │   │   ├── PredictiveModule.kt # Predictive intelligence DI
+│   │   │   │   │   │   ├── EmotionalModule.kt  # Emotional health AI DI
+│   │   │   │   │   │   ├── BlockchainModule.kt # Community wisdom network
+│   │   │   │   │   │   └── EnvironmentalModule.kt # Environmental data DI
+│   │   │   │   │   └── config/                # Revolutionary configuration
 │   │   │   │   │       ├── AppConfig.kt
-│   │   │   │   │       └── RegionConfig.kt
+│   │   │   │   │       ├── AiConfig.kt        # AI model configurations
+│   │   │   │   │       └── PredictiveConfig.kt # Prediction parameters
 │   │   │   │   │
-│   │   │   │   ├── domain/                    # Pure business logic — no Android deps
-│   │   │   │   │   ├── model/                 # Core data models
-│   │   │   │   │   │   ├── Household.kt
-│   │   │   │   │   │   ├── Profile.kt
-│   │   │   │   │   │   ├── HealthEvent.kt
-│   │   │   │   │   │   ├── Severity.kt        # Enum: INFORMATIONAL, WATCH, SEEK_CARE, EMERGENCY
-│   │   │   │   │   │   ├── ConversationTurn.kt
-│   │   │   │   │   │   └── CommunitySignal.kt # Anonymized aggregate
-│   │   │   │   │   ├── usecase/               # Application use cases
-│   │   │   │   │   │   ├── StartHealthConversation.kt
-│   │   │   │   │   │   ├── GetHealthTimeline.kt
-│   │   │   │   │   │   ├── DetectFamilyRisks.kt
-│   │   │   │   │   │   ├── LookupRemedy.kt
-│   │   │   │   │   │   ├── GenerateCommunitySignal.kt
-│   │   │   │   │   │   └── ScheduleReminder.kt
-│   │   │   │   │   └── repository/            # Repository interfaces (contracts)
-│   │   │   │   │       ├── HouseholdRepository.kt
-│   │   │   │   │       ├── HealthEventRepository.kt
-│   │   │   │   │       ├── KnowledgeBaseRepository.kt
-│   │   │   │   │       └── SyncRepository.kt
+│   │   │   │   ├── domain/                    # Enhanced business logic
+│   │   │   │   │   ├── model/                 # Revolutionary data models
+│   │   │   │   │   │   ├── Household.kt       # Enhanced with 3-generation mapping
+│   │   │   │   │   │   ├── Profile.kt         # Enhanced with genetic predisposition
+│   │   │   │   │   │   ├── HealthEvent.kt     # Enhanced with emotional indicators
+│   │   │   │   │   │   ├── PredictiveRisk.kt  # Health risk predictions (NEW)
+│   │   │   │   │   │   ├── EmotionalState.kt  # Emotional health tracking (NEW)
+│   │   │   │   │   │   ├── CulturalWisdom.kt  # Traditional knowledge (NEW)
+│   │   │   │   │   │   ├── EnvironmentalData.kt # Environmental health data (NEW)
+│   │   │   │   │   │   └── HealthCoaching.kt  # AI coaching recommendations (NEW)
+│   │   │   │   │   ├── usecase/               # Revolutionary use cases
+│   │   │   │   │   │   ├── PredictHealthRisks.kt # Pre-symptomatic prediction (NEW)
+│   │   │   │   │   │   ├── AssessEmotionalHealth.kt # Holistic health assessment (NEW)
+│   │   │   │   │   │   ├── ValidateCulturalWisdom.kt # Community wisdom validation (NEW)
+│   │   │   │   │   │   ├── GenerateHealthCoaching.kt # Personalized coaching (NEW)
+│   │   │   │   │   │   ├── AnalyzeIntergenerationalPatterns.kt # 3-gen analysis (NEW)
+│   │   │   │   │   │   ├── StartHealthConversation.kt # Enhanced with emotion
+│   │   │   │   │   │   ├── GetHealthTimeline.kt # Enhanced with predictions
+│   │   │   │   │   │   └── DetectFamilyRisks.kt # Enhanced genetic analysis
+│   │   │   │   │   └── repository/            # Enhanced repository interfaces
+│   │   │   │   │       ├── PredictiveRepository.kt # Health prediction data (NEW)
+│   │   │   │   │       ├── EmotionalRepository.kt # Emotional health data (NEW)
+│   │   │   │   │       ├── CulturalWisdomRepository.kt # Traditional knowledge (NEW)
+│   │   │   │   │       ├── EnvironmentalRepository.kt # Environmental data (NEW)
+│   │   │   │   │       └── HealthCoachingRepository.kt # Coaching data (NEW)
 │   │   │   │   │
-│   │   │   │   ├── data/                      # Data layer — implements domain contracts
-│   │   │   │   │   ├── local/                 # SQLite (offline-first)
-│   │   │   │   │   │   ├── SwasthyaDatabase.kt          # Room database definition
-│   │   │   │   │   │   ├── dao/
-│   │   │   │   │   │   │   ├── HouseholdDao.kt
-│   │   │   │   │   │   │   ├── ProfileDao.kt
-│   │   │   │   │   │   │   ├── HealthEventDao.kt
-│   │   │   │   │   │   │   ├── ConversationDao.kt
-│   │   │   │   │   │   │   ├── KnowledgeCacheDao.kt
-│   │   │   │   │   │   │   └── SyncQueueDao.kt
-│   │   │   │   │   │   └── entity/           # Room entities (DB row mappers)
-│   │   │   │   │   │       ├── HouseholdEntity.kt
-│   │   │   │   │   │       ├── ProfileEntity.kt
-│   │   │   │   │   │       ├── HealthEventEntity.kt
-│   │   │   │   │   │       └── ...
-│   │   │   │   │   ├── remote/               # Cloud API clients
-│   │   │   │   │   │   ├── SyncApiClient.kt
-│   │   │   │   │   │   ├── CommunityApiClient.kt
-│   │   │   │   │   │   └── ClinicApiClient.kt
-│   │   │   │   │   ├── mapper/               # Entity ↔ Domain model mappers
-│   │   │   │   │   │   ├── HouseholdMapper.kt
-│   │   │   │   │   │   └── ...
-│   │   │   │   │   └── repository/           # Concrete repository implementations
-│   │   │   │   │       ├── HouseholdRepositoryImpl.kt
-│   │   │   │   │       └── ...
+│   │   │   │   ├── data/                      # Enhanced data layer
+│   │   │   │   │   ├── local/                 # Revolutionary local storage
+│   │   │   │   │   │   ├── NivaDatabase.kt    # Enhanced database with new entities
+│   │   │   │   │   │   ├── dao/               # Enhanced DAOs
+│   │   │   │   │   │   │   ├── PredictiveDao.kt # Prediction data access (NEW)
+│   │   │   │   │   │   │   ├── EmotionalDao.kt # Emotional health DAO (NEW)
+│   │   │   │   │   │   │   ├── CulturalWisdomDao.kt # Traditional knowledge DAO (NEW)
+│   │   │   │   │   │   │   ├── EnvironmentalDao.kt # Environmental data DAO (NEW)
+│   │   │   │   │   │   │   └── HealthCoachingDao.kt # Coaching data DAO (NEW)
+│   │   │   │   │   │   └── entity/            # Enhanced database entities
+│   │   │   │   │   │       ├── PredictiveRiskEntity.kt # Risk prediction storage (NEW)
+│   │   │   │   │   │       ├── EmotionalStateEntity.kt # Emotional tracking (NEW)
+│   │   │   │   │   │       └── CulturalWisdomEntity.kt # Traditional knowledge (NEW)
+│   │   │   │   │   ├── remote/               # Enhanced cloud API clients
+│   │   │   │   │   │   ├── PredictiveApiClient.kt # Prediction service API (NEW)
+│   │   │   │   │   │   ├── EmotionalApiClient.kt # Emotional health API (NEW)
+│   │   │   │   │   │   ├── BlockchainApiClient.kt # Wisdom verification API (NEW)
+│   │   │   │   │   │   └── EnvironmentalApiClient.kt # Environmental data API (NEW)
+│   │   │   │   │   └── repository/           # Enhanced repository implementations
+│   │   │   │   │       ├── PredictiveRepositoryImpl.kt # Prediction repo (NEW)
+│   │   │   │   │       └── EmotionalRepositoryImpl.kt # Emotional repo (NEW)
 │   │   │   │   │
-│   │   │   │   ├── ai/                       # On-device AI module (peer to data, not inside it)
-│   │   │   │   │   ├── engine/
-│   │   │   │   │   │   ├── HealthCompanionEngine.kt     # Main AI orchestrator
-│   │   │   │   │   │   ├── ModelLoader.kt               # ONNX model loading & caching
-│   │   │   │   │   │   ├── InferenceRunner.kt           # Quantized model inference
-│   │   │   │   │   │   └── LanguageAdapterSwitch.kt     # Swaps language-specific LoRA adapters
-│   │   │   │   │   ├── pipeline/
-│   │   │   │   │   │   ├── LiteracyContextScorer.kt     # Computes & updates LCS
-│   │   │   │   │   │   ├── ResponsePostProcessor.kt     # Simplify/elaborate based on LCS
-│   │   │   │   │   │   ├── SeverityClassifier.kt        # Maps conversation → severity level
-│   │   │   │   │   │   └── PatternDetector.kt           # Temporal pattern detection across events
-│   │   │   │   │   ├── knowledge/
-│   │   │   │   │   │   ├── CulturalBridgeEngine.kt      # Folk remedy ↔ evidence mapping
-│   │   │   │   │   │   ├── RegionalRiskEngine.kt        # Geo-based seasonal risk lookup
-│   │   │   │   │   │   └── HeredityRiskEngine.kt        # Family-tree-based risk flags
-│   │   │   │   │   └── model/                           # AI-specific data models
-│   │   │   │   │       ├── AiResponse.kt
-│   │   │   │   │       ├── LiteracyContext.kt
-│   │   │   │   │       └── HealthPattern.kt
+│   │   │   │   ├── ai/                       # Revolutionary AI module
+│   │   │   │   │   ├── engine/               # Multi-modal AI engines
+│   │   │   │   │   │   ├── HealthCompanionEngine.kt # Enhanced with emotion
+│   │   │   │   │   │   ├── PredictiveEngine.kt # Health prediction AI (NEW)
+│   │   │   │   │   │   ├── EmotionalIntelligenceEngine.kt # Emotion recognition (NEW)
+│   │   │   │   │   │   ├── CulturalAdaptationEngine.kt # Cultural sensitivity (NEW)
+│   │   │   │   │   │   └── HealthCoachingEngine.kt # Personalized coaching (NEW)
+│   │   │   │   │   ├── models/               # Specialized AI models
+│   │   │   │   │   │   ├── HealthPredictionModel.kt # Risk prediction model (NEW)
+│   │   │   │   │   │   ├── EmotionRecognitionModel.kt # Voice emotion analysis (NEW)
+│   │   │   │   │   │   ├── CulturalContextModel.kt # Cultural adaptation (NEW)
+│   │   │   │   │   │   └── EnvironmentalCorrelationModel.kt # Env-health links (NEW)
+│   │   │   │   │   ├── pipeline/             # Enhanced AI pipelines
+│   │   │   │   │   │   ├── PredictiveRiskPipeline.kt # Risk assessment pipeline (NEW)
+│   │   │   │   │   │   ├── EmotionalAnalysisPipeline.kt # Emotion processing (NEW)
+│   │   │   │   │   │   ├── HolisticHealthPipeline.kt # Mind-body integration (NEW)
+│   │   │   │   │   │   └── IntergenerationalPipeline.kt # 3-gen analysis (NEW)
+│   │   │   │   │   └── knowledge/            # Enhanced knowledge systems
+│   │   │   │   │       ├── CommunityWisdomEngine.kt # Blockchain wisdom (NEW)
+│   │   │   │   │       ├── EnvironmentalHealthEngine.kt # Env correlation (NEW)
+│   │   │   │   │       └── IntergenerationalEngine.kt # Family patterns (NEW)
 │   │   │   │   │
-│   │   │   │   ├── sync/                     # Sync & anonymization module
-│   │   │   │   │   ├── SyncManager.kt                   # Orchestrates sync lifecycle
-│   │   │   │   │   ├── ConnectivityMonitor.kt           # Watches network state
-│   │   │   │   │   ├── AnonymizationPipeline.kt         # Individual → aggregate transform
-│   │   │   │   │   ├── ConflictResolver.kt              # Handles local vs cloud conflicts
-│   │   │   │   │   └── UpdateApplicator.kt              # Applies cloud-pushed updates locally
+│   │   │   │   ├── prediction/               # Predictive health intelligence (NEW)
+│   │   │   │   │   ├── RiskPredictor.kt      # Core prediction engine
+│   │   │   │   │   ├── SeasonalForecaster.kt # Seasonal disease prediction
+│   │   │   │   │   ├── EnvironmentalAnalyzer.kt # Environmental risk analysis
+│   │   │   │   │   ├── PersonalRiskCalendar.kt # Individual risk calendars
+│   │   │   │   │   └── CommunityTrendAnalyzer.kt # Community pattern analysis
 │   │   │   │   │
-│   │   │   │   ├── ui/                       # Presentation layer (Jetpack Compose)
-│   │   │   │   │   ├── theme/               # Design system
-│   │   │   │   │   │   ├── Color.kt
-│   │   │   │   │   │   ├── Typography.kt
-│   │   │   │   │   │   └── Theme.kt
-│   │   │   │   │   ├── screen/              # Top-level screens
-│   │   │   │   │   │   ├── home/
-│   │   │   │   │   │   │   ├── HomeScreen.kt
-│   │   │   │   │   │   │   └── HomeViewModel.kt
-│   │   │   │   │   │   ├── conversation/
-│   │   │   │   │   │   │   ├── ConversationScreen.kt   # Main health chat UI
-│   │   │   │   │   │   │   └── ConversationViewModel.kt
-│   │   │   │   │   │   ├── timeline/
-│   │   │   │   │   │   │   ├── TimelineScreen.kt       # Visual health narrative
-│   │   │   │   │   │   │   └── TimelineViewModel.kt
-│   │   │   │   │   │   ├── family/
-│   │   │   │   │   │   │   ├── FamilyTreeScreen.kt     # Multi-profile management
-│   │   │   │   │   │   │   └── FamilyTreeViewModel.kt
-│   │   │   │   │   │   ├── asha/
-│   │   │   │   │   │   │   ├── AshaCopilotScreen.kt    # ASHA worker dashboard
-│   │   │   │   │   │   │   └── AshaCopilotViewModel.kt
-│   │   │   │   │   │   ├── onboarding/
-│   │   │   │   │   │   │   ├── OnboardingScreen.kt
-│   │   │   │   │   │   │   └── OnboardingViewModel.kt
-│   │   │   │   │   │   └── emergency/
-│   │   │   │   │   │       ├── EmergencyScreen.kt      # One-tap emergency flow
-│   │   │   │   │   │       └── EmergencyViewModel.kt
-│   │   │   │   │   └── component/           # Reusable UI components
-│   │   │   │   │       ├── VoiceInput.kt
-│   │   │   │   │       ├── SeverityBadge.kt
-│   │   │   │   │       ├── HealthCard.kt
-│   │   │   │   │       ├── FamilyProfileChip.kt
-│   │   │   │   │       └── DisclaimerBanner.kt
+│   │   │   │   ├── emotional/                # Emotional health integration (NEW)
+│   │   │   │   │   ├── EmotionalStateDetector.kt # Voice/text emotion detection
+│   │   │   │   │   ├── HolisticHealthAssessor.kt # Mind-body health evaluation
+│   │   │   │   │   ├── CulturalMentalHealthAdapter.kt # Cultural mental health
+│   │   │   │   │   ├── StressPhysicalCorrelator.kt # Stress-symptom correlation
+│   │   │   │   │   └── SupportNetworkMatcher.kt # Anonymous support matching
 │   │   │   │   │
-│   │   │   │   └── reminder/                # Reminder / notification system
-│   │   │   │       ├── ReminderScheduler.kt            # AlarmManager-based scheduling
-│   │   │   │       ├── ReminderService.kt              # Foreground service for reminders
-│   │   │   │       └── ReminderDatabase.kt             # Local reminder store
+│   │   │   │   ├── blockchain/               # Community wisdom network (NEW)
+│   │   │   │   │   ├── WisdomVerifier.kt     # Blockchain wisdom verification
+│   │   │   │   │   ├── CommunityConsensus.kt # Community validation system
+│   │   │   │   │   ├── RemedyEffectivenessTracker.kt # Anonymous effectiveness tracking
+│   │   │   │   │   └── CulturalKnowledgePreserver.kt # Knowledge preservation
+│   │   │   │   │
+│   │   │   │   ├── coaching/                 # AI-powered health coaching (NEW)
+│   │   │   │   │   ├── PersonalizedCoach.kt  # Individual coaching engine
+│   │   │   │   │   ├── CulturalLifestyleAdapter.kt # Cultural lifestyle advice
+│   │   │   │   │   ├── EconomicAwareRecommender.kt # Budget-conscious advice
+│   │   │   │   │   ├── SeasonalOptimizer.kt  # Seasonal lifestyle optimization
+│   │   │   │   │   └── CommunityChallenger.kt # Social health challenges
+│   │   │   │   │
+│   │   │   │   ├── environmental/            # Environmental health monitoring (NEW)
+│   │   │   │   │   ├── EnvironmentalMonitor.kt # Real-time environmental data
+│   │   │   │   │   ├── AirQualityAnalyzer.kt # Air quality health correlation
+│   │   │   │   │   ├── WaterQualityTracker.kt # Water safety monitoring
+│   │   │   │   │   ├── WeatherHealthCorrelator.kt # Weather-health patterns
+│   │   │   │   │   └── AgriculturalHealthLinker.kt # Crop-health connections
+│   │   │   │   │
+│   │   │   │   ├── ui/                       # Revolutionary user interface
+│   │   │   │   │   ├── screen/              # Enhanced screens
+│   │   │   │   │   │   ├── prediction/      # Predictive health screens (NEW)
+│   │   │   │   │   │   │   ├── RiskCalendarScreen.kt # Personal risk calendar
+│   │   │   │   │   │   │   ├── PredictionDashboardScreen.kt # Health predictions
+│   │   │   │   │   │   │   └── PreventiveActionScreen.kt # Preventive recommendations
+│   │   │   │   │   │   ├── emotional/       # Emotional health screens (NEW)
+│   │   │   │   │   │   │   ├── HolisticHealthScreen.kt # Mind-body health view
+│   │   │   │   │   │   │   ├── EmotionalWellnessScreen.kt # Emotional tracking
+│   │   │   │   │   │   │   └── SupportNetworkScreen.kt # Community support
+│   │   │   │   │   │   ├── wisdom/          # Community wisdom screens (NEW)
+│   │   │   │   │   │   │   ├── CulturalWisdomScreen.kt # Traditional knowledge
+│   │   │   │   │   │   │   ├── RemedyVerificationScreen.kt # Remedy validation
+│   │   │   │   │   │   │   └── ElderKnowledgeScreen.kt # Elder wisdom recording
+│   │   │   │   │   │   ├── coaching/        # Health coaching screens (NEW)
+│   │   │   │   │   │   │   ├── PersonalCoachScreen.kt # AI coaching interface
+│   │   │   │   │   │   │   ├── LifestyleOptimizationScreen.kt # Lifestyle advice
+│   │   │   │   │   │   │   └── CommunityChallengScreen.kt # Social challenges
+│   │   │   │   │   │   └── environmental/   # Environmental health screens (NEW)
+│   │   │   │   │   │       ├── EnvironmentalDashboardScreen.kt # Env health data
+│   │   │   │   │   │       └── RiskAlertScreen.kt # Environmental risk alerts
+│   │   │   │   │   └── component/           # Revolutionary UI components
+│   │   │   │   │       ├── PredictiveRiskCard.kt # Risk prediction display (NEW)
+│   │   │   │   │       ├── EmotionalStateIndicator.kt # Emotion visualization (NEW)
+│   │   │   │   │       ├── CulturalWisdomCard.kt # Traditional knowledge display (NEW)
+│   │   │   │   │       ├── HealthCoachingCard.kt # Coaching recommendations (NEW)
+│   │   │   │   │       └── EnvironmentalRiskBadge.kt # Environmental alerts (NEW)
 │   │   │   │
-│   │   │   ├── res/                         # Standard Android resources
-│   │   │   │   ├── drawable/
-│   │   │   │   ├── layout/
-│   │   │   │   ├── values/
-│   │   │   │   │   ├── strings.kt          # Base (English) strings
-│   │   │   │   │   └── colors.xml
-│   │   │   │   └── values-hi/              # Hindi strings (example; 12+ language dirs)
-│   │   │   │       └── strings.xml
-│   │   │   └── assets/
-│   │   │       ├── models/                 # On-device ONNX model files
-│   │   │       │   ├── health_companion_int4.onnx
-│   │   │       │   └── lang_adapters/
-│   │   │       │       ├── hindi.lora
-│   │   │       │       ├── telugu.lora
-│   │   │       │       └── ...
-│   │   │       └── knowledge/              # Pre-loaded knowledge base (JSON)
-│   │   │           ├── cultural_bridge.json
-│   │   │           ├── symptom_conditions.json
-│   │   │           └── regional_risks.json
-│   │   └── test/                           # Unit + integration tests
-│   │       └── java/com/swasthya/mitra/
-│   │           ├── ai/                     # AI pipeline tests
-│   │           ├── sync/                   # Anonymization pipeline tests
-│   │           └── domain/                 # Use case tests
-│   └── build.gradle.kts
-├── wear/                                   # (Future) Wearable companion app
-└── build.gradle.kts                        # Root Gradle config
+│   │   │   ├── assets/                     # Enhanced assets
+│   │   │   │   ├── models/                 # Revolutionary AI models
+│   │   │   │   │   ├── health_companion_v2.onnx # Enhanced health AI
+│   │   │   │   │   ├── predictive_risk.onnx # Risk prediction model (NEW)
+│   │   │   │   │   ├── emotion_recognition.onnx # Emotion AI model (NEW)
+│   │   │   │   │   ├── cultural_adaptation.onnx # Cultural AI model (NEW)
+│   │   │   │   │   └── environmental_correlation.onnx # Environmental AI (NEW)
+│   │   │   │   ├── knowledge/              # Enhanced knowledge base
+│   │   │   │   │   ├── community_wisdom.json # Blockchain-verified wisdom (NEW)
+│   │   │   │   │   ├── environmental_correlations.json # Env-health data (NEW)
+│   │   │   │   │   ├── intergenerational_patterns.json # Family patterns (NEW)
+│   │   │   │   │   └── cultural_mental_health.json # Cultural mental health (NEW)
+│   │   │   │   └── blockchain/             # Blockchain configuration (NEW)
+│   │   │   │       └── wisdom_network_config.json # Community network config
+│   │   │   └── test/                       # Revolutionary testing
+│   │   │       └── java/com/niva/health/
+│   │   │           ├── prediction/         # Predictive AI tests (NEW)
+│   │   │           ├── emotional/          # Emotional AI tests (NEW)
+│   │   │           ├── blockchain/         # Blockchain tests (NEW)
+│   │   │           └── coaching/           # Coaching AI tests (NEW)
+│   └── build.gradle.kts                    # Enhanced build configuration
+├── wear/                                   # Revolutionary wearable companion
+└── build.gradle.kts                        # Root build configuration
 ```
 
 ---
